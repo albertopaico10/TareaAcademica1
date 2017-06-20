@@ -1,0 +1,116 @@
+@{meta('title', 'description', 'keywords')}
+
+<!-- /css/ -->
+@{ngStyle('bootstrap','bootstrap.min','simple-sidebar')}
+
+<!-- cdnjs -->
+@{ngLocale('en-us')}
+
+<!-- /app/controllers/ -->
+@{ngController('main')}
+<div id="wrapper" ng-controller="MainCtrl">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    Start Bootstrap
+                </a>
+            </li>
+            <li>
+                <a href="#" ng-click="home_page()">Home</a>
+            </li>
+            <li>
+                <a href="#" ng-click="service_div()">Servicios</a>
+            </li>
+            <li>
+                <a href="#" ng-click="about_div()">Acerca de Mi</a>
+            </li>
+            <li>
+                <a href="#" ng-click="register_div()">Registrarse</a>
+            </li>
+            <li>
+                <a href="#" ng-click="login_div()">Login</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div ng-show="main_page">
+                      <h1>{{title}}</h1>
+                      <p>{{name}}</p>
+                      <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Menu</a>
+                    </div>
+                    <div ng-hide="about_page">
+                      <h1>{{title}}</h1>
+                      <p>{{name}}</p>
+                      <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Menu</a>
+                    </div>
+                    <div ng-hide="service_page">
+                      <h1>{{title}}</h1>
+                      <p>{{name}}</p>
+                      <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Menu</a>
+                    </div>
+                    <div ng-hide="register_page" name="mobile_registration_form">
+                      <h1>{{title}}</h1>
+                      <p>{{name}}</p>
+                      <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Menu</a>
+                    <br />
+                      <p>Complete el formulario</p>
+                    <br />
+                      <form class="simple-form">
+                        <div>Name:</div>
+                      	<div><input type="text" ng-model="user.name" /></div>
+                      	<br />
+                      	<div>E-mail:</div>
+                      	<div><input type="email" ng-model="user.email" /></div>
+                      	<br />
+                      	<div>Password:</div>
+                      	<div><input type="password" ng-model="user.password" /></div>
+                      	<br />
+                        <div><input type="submit" ng-click="save_register(user)" value="Grabar"/></div>
+                      </form>
+                    </div>
+                    <div ng-hide="login_page">
+                      <h1>{{title}}</h1>
+                      <p>{{name}}</p>
+                      <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Menu</a>
+                    <br />
+
+                    <br />
+                      <form class="simple-form" name="mobile_login_form">
+                      	<div>E-mail:</div>
+                      	<div><input type="email" ng-model="user.email" /></div>
+                      	<br />
+                      	<div>Password:</div>
+                      	<div><input type="password" ng-model="user.password" /></div>
+                      	<br />
+                        <div><input type="submit" ng-click="validation_login(user)" value="Validar"/></div>
+                      </form>
+                    </div>
+                    <div ng-hide="welcome_page">
+                      <h1>{{title}}</h1>
+                      <p>Su nombre es : {{name}}</p>
+                      <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- /#page-content-wrapper -->
+    <script>
+      $("#menu-toggle").click(function(e) {
+          e.preventDefault();
+          $("#wrapper").toggleClass("toggled");
+      });
+    </script>
+</div>
+<!-- /#wrapper -->
